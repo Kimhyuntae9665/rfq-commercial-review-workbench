@@ -2,7 +2,7 @@
 
 Browser requests the loopback Python API. Frozen text/CSV quotes are held in JSON. Optional serial Ollama/Qwen proposals extract original source cells only. Human terms confirmation is required before CPU Fraction/integer scenario cost calculation; a separate reviewer acknowledges a specific packet. SQLite stores proposals, confirmations, active scenario, packets, reviews and audits. No supplier selection, purchase write, ERP or active n8n is depicted.
 
-PNG is the inline README asset; SVG is the editable, fully embedded source. Six compact cards use actual technology glyphs where available. JSON braces are a locally authored functional symbol. Browser contains the JavaScript glyph for the vanilla client. The undirected Ollama/Qwen link denotes runtime/model association; dashed arrows are optional requests and returned proposals, not parallel GPU workers. The solid Python/SQLite arrow denotes server-owned persistence after human review.
+PNG is the inline README asset; SVG is the editable, fully embedded source. Six compact cards use actual technology glyphs where available. JSON braces are a locally authored functional symbol. Browser contains the JavaScript glyph for the vanilla client. The undirected Ollama/Qwen link denotes runtime/model association; dashed arrows are optional requests and returned proposals, not parallel GPU workers. The solid Python/SQLite arrow denotes server-owned record persistence, including subsequent review and audit records.
 
 Inspected source commit: 1b59f976d2e78a1bf3469ac85a886b9b15af0a73. Diagram generation does not rerun a model or change benchmark results. Final PNG pixels and an actual 360px-wide CPU browser capture were visually inspected; technology labels are 28px in the 720px source (14px at 360px display).
 
@@ -24,3 +24,5 @@ Reference style: user-supplied synthetic-logo-rendering-compatibility-test.png, 
 - rfq_review/extraction.py SHA256 82c67aada471fd49005b7569185302bbba411782419f532be5bde284580aa102
 - rfq_review/calculation.py SHA256 36e01c6eb68fb8974538ea10d8ab2776d2e62f2c036f079ad3be9c520251c1c9
 - rfq_review/llm.py SHA256 899b45a234a2f62c3756178d28d820e7ac05cb87341d5ef0cd9f3c5d78ba7489
+
+Logo geometry: each downloaded glyph has viewBox 0 0 24 24. The embedded path uses one uniform scale in both axes, fitted to a 68x68 box and centered in its card. SQLite retains the feather proportions; no nested SVG sizing or anisotropic scaling is used. The JavaScript glyph is uniformly fitted to its separate yellow browser tile.
