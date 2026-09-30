@@ -1,0 +1,92 @@
+{
+  "api_integration": true,
+  "synthetic": true,
+  "model_requests": 3,
+  "cases": [
+    {
+      "offer_id": "OFFER-A",
+      "model_state": "source_verified",
+      "metrics": {
+        "requested_mode": "model",
+        "synthetic": true,
+        "load_duration": 1637978869,
+        "prompt_eval_count": 1100,
+        "prompt_eval_duration": 281080767,
+        "eval_count": 559,
+        "eval_duration": 7061805052,
+        "total_duration": 10214393161,
+        "done_reason": "stop",
+        "latency_ms": 10217.77,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "6e135269-83b5-4616-a676-e465937f91ec",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false,
+        "total_ms": 10220.838
+      },
+      "proposal_id": "1bbc8eda97674de58c51374fb6f00e0f"
+    },
+    {
+      "offer_id": "OFFER-B",
+      "model_state": "source_verified",
+      "metrics": {
+        "requested_mode": "model",
+        "synthetic": true,
+        "load_duration": 155564811,
+        "prompt_eval_count": 1075,
+        "prompt_eval_duration": 191236404,
+        "eval_count": 529,
+        "eval_duration": 6689618906,
+        "total_duration": 8230091678,
+        "done_reason": "stop",
+        "latency_ms": 8232.96,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "1f47c18d-2aa7-41b7-b1de-0cee36cccfca",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false,
+        "total_ms": 8234.238
+      },
+      "proposal_id": "e7c9cec567f343b694171db697feb9e0"
+    },
+    {
+      "offer_id": "OFFER-C",
+      "model_state": "source_verified",
+      "metrics": {
+        "requested_mode": "model",
+        "synthetic": true,
+        "load_duration": 144660727,
+        "prompt_eval_count": 1059,
+        "prompt_eval_duration": 186116735,
+        "eval_count": 530,
+        "eval_duration": 6682487292,
+        "total_duration": 8142155247,
+        "done_reason": "stop",
+        "latency_ms": 8145.4,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "2728ef9e-a4b7-46e4-91ad-127b12c7b038",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false,
+        "total_ms": 8146.569
+      },
+      "proposal_id": "3ce3ea394df246aeb5b563b5e93b9446"
+    }
+  ],
+  "http200_is_success": false
+}

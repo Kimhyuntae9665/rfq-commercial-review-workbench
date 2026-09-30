@@ -1,0 +1,948 @@
+{
+  "synthetic": true,
+  "gold_exposed": false,
+  "calculation_by_model": false,
+  "cases": [
+    {
+      "offer_id": "OFFER-A",
+      "success": true,
+      "metrics": {
+        "load_duration": 1621859112,
+        "prompt_eval_count": 1100,
+        "prompt_eval_duration": 281198391,
+        "eval_count": 559,
+        "eval_duration": 7126814192,
+        "total_duration": 10357858136,
+        "done_reason": "stop",
+        "latency_ms": 10361.97,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "6be54f94-9b83-4589-a9ba-578adf46704a",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false
+      },
+      "terms": {
+        "currency": "KRW",
+        "price_amount_krw": 120000,
+        "price_basis_each": 10,
+        "order_unit": "pack",
+        "units_per_order_unit": 10,
+        "moq": 2,
+        "moq_unit": "pack",
+        "order_multiple": 1,
+        "order_multiple_unit": "pack",
+        "freight_status": "fixed_per_order",
+        "freight_amount_krw": 5000,
+        "other_mandatory_charge_status": "none_explicit",
+        "tax_status": "tax_excluded",
+        "valid_until": "2026-10-31",
+        "lead_time_type": "absolute_date",
+        "delivery_date": "2026-10-08",
+        "lead_time_condition": null
+      },
+      "field_count": 17,
+      "peak_gpu_used_mib": 3591,
+      "resource_samples": [
+        {
+          "gpu_used_mib": 418,
+          "gpu_utilization": "0",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21720384
+          }
+        },
+        {
+          "gpu_used_mib": 418,
+          "gpu_utilization": "0",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21649012
+          }
+        },
+        {
+          "gpu_used_mib": 432,
+          "gpu_utilization": "6",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21532492
+          }
+        },
+        {
+          "gpu_used_mib": 3183,
+          "gpu_utilization": "6",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21407092
+          }
+        },
+        {
+          "gpu_used_mib": 3583,
+          "gpu_utilization": "6",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21387208
+          }
+        },
+        {
+          "gpu_used_mib": 3583,
+          "gpu_utilization": "29",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21135964
+          }
+        },
+        {
+          "gpu_used_mib": 3583,
+          "gpu_utilization": "29",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 21033364
+          }
+        },
+        {
+          "gpu_used_mib": 3583,
+          "gpu_utilization": "29",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20981480
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "29",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20941692
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "26",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20931968
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "26",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20935044
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "26",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20912616
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "26",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20897748
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20876044
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20880580
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20861176
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20848116
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20829460
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20844748
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "89",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20844824
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20841424
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20840920
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20825044
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20845792
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20854488
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20852808
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20836932
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20842500
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20863488
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20863488
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20847112
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20841352
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20832784
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20816908
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20822216
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20808712
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20822796
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20823088
+          }
+        }
+      ]
+    },
+    {
+      "offer_id": "OFFER-B",
+      "success": true,
+      "metrics": {
+        "load_duration": 124734782,
+        "prompt_eval_count": 1075,
+        "prompt_eval_duration": 191782396,
+        "eval_count": 529,
+        "eval_duration": 6752908971,
+        "total_duration": 8235953810,
+        "done_reason": "stop",
+        "latency_ms": 8239.07,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "aceff128-ee29-4651-a5f4-30101930f3eb",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false
+      },
+      "terms": {
+        "currency": "KRW",
+        "price_amount_krw": 15000,
+        "price_basis_each": 1,
+        "order_unit": "each",
+        "units_per_order_unit": 1,
+        "moq": 1,
+        "moq_unit": "each",
+        "order_multiple": 1,
+        "order_multiple_unit": "each",
+        "freight_status": "included",
+        "freight_amount_krw": null,
+        "other_mandatory_charge_status": "none_explicit",
+        "tax_status": "tax_excluded",
+        "valid_until": "2026-10-31",
+        "lead_time_type": "absolute_date",
+        "delivery_date": "2026-10-07",
+        "lead_time_condition": null
+      },
+      "field_count": 17,
+      "peak_gpu_used_mib": 3593,
+      "resource_samples": [
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "76",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20810152
+          }
+        },
+        {
+          "gpu_used_mib": 3591,
+          "gpu_utilization": "76",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20795928
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "76",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20754668
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "76",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20701496
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20717312
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20701996
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20686364
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20662676
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20659836
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20659884
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20644008
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20652700
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20637948
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20661524
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20637192
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "88",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20647684
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "88",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20630296
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "88",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20609500
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "88",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20601688
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20596884
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20596632
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20618140
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20641228
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20645408
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20647236
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20672488
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20661872
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20663164
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20671452
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20682372
+          }
+        }
+      ]
+    },
+    {
+      "offer_id": "OFFER-C",
+      "success": true,
+      "metrics": {
+        "load_duration": 128880211,
+        "prompt_eval_count": 1059,
+        "prompt_eval_duration": 195910907,
+        "eval_count": 530,
+        "eval_duration": 6737237085,
+        "total_duration": 8218392171,
+        "done_reason": "stop",
+        "latency_ms": 8221.58,
+        "model": "qwen3:4b",
+        "requested_think": false,
+        "thinking_chars": 0,
+        "context_limit": 4096,
+        "concurrency": 1,
+        "trace_id": "b730b095-84ef-4443-899d-03d2e2341883",
+        "candidate_constraint": "all_source_cells_and_lines_not_field_specific",
+        "model_task": "independent_offer_full_cell_extraction",
+        "calculation_origin": "deterministic_integer_fraction",
+        "thinking_off_verified": false
+      },
+      "terms": {
+        "currency": "KRW",
+        "price_amount_krw": 11000,
+        "price_basis_each": 1,
+        "order_unit": "each",
+        "units_per_order_unit": 1,
+        "moq": 1,
+        "moq_unit": "each",
+        "order_multiple": 1,
+        "order_multiple_unit": "each",
+        "freight_status": "unknown",
+        "freight_amount_krw": null,
+        "other_mandatory_charge_status": "none_explicit",
+        "tax_status": "tax_excluded",
+        "valid_until": "2026-10-31",
+        "lead_time_type": "conditional",
+        "delivery_date": null,
+        "lead_time_condition": "PO 접수 후 7일"
+      },
+      "field_count": 17,
+      "peak_gpu_used_mib": 3593,
+      "resource_samples": [
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20688548
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20663368
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20651272
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "48",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20685476
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "48",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20687064
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "48",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20679252
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "48",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20655236
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20691852
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20676032
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "83",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20675024
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20691096
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20703480
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20710996
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "84",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20695184
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20688508
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20705616
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20698060
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "87",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20673872
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20693668
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20681000
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "82",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20659532
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "86",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20689048
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "86",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20681196
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "86",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20688588
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "86",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20705240
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20698808
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20698744
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20681160
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20705276
+          }
+        },
+        {
+          "gpu_used_mib": 3593,
+          "gpu_utilization": "85",
+          "ram_kib": {
+            "MemTotal": 32806192,
+            "MemAvailable": 20707308
+          }
+        }
+      ]
+    }
+  ],
+  "before": {
+    "gpu_used_mib": 418,
+    "gpu_utilization": "0",
+    "ram_kib": {
+      "MemTotal": 32806192,
+      "MemAvailable": 21744620
+    }
+  },
+  "after": {
+    "gpu_used_mib": 3593,
+    "gpu_utilization": "85",
+    "ram_kib": {
+      "MemTotal": 32806192,
+      "MemAvailable": 20691472
+    }
+  }
+}

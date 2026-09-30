@@ -1,0 +1,8 @@
+{
+  "gold_sha256": "6830e7e312c6d8b4dd37aa9712b359cfbe167861c5732ba0a39e76bfb40da08f",
+  "corpus_sha256": "759068accd9d2c57238b7f57ee45fff4b3d813fe0e4b77f8cc6809bcc66ece61",
+  "case_count": 15,
+  "offer_count": 3,
+  "model_requests_before_freeze": 0,
+  "calculation_code_before_freeze": false
+}

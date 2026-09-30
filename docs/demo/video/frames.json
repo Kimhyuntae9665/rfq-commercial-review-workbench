@@ -1,0 +1,115 @@
+{
+  "capture": "native browser JPEG viewport frames",
+  "model_requests_during_recording": 0,
+  "source": "stored actual API model proposals",
+  "frames": [
+    {
+      "file": "frame-000.jpg",
+      "elapsed_s": 0.356672195950523
+    },
+    {
+      "file": "frame-001.jpg",
+      "elapsed_s": 0.6804914991371334
+    },
+    {
+      "file": "frame-002.jpg",
+      "elapsed_s": 0.9830715090502053
+    },
+    {
+      "file": "frame-003.jpg",
+      "elapsed_s": 1.5246414570137858
+    },
+    {
+      "file": "frame-004.jpg",
+      "elapsed_s": 1.8611620641313493
+    },
+    {
+      "file": "frame-005.jpg",
+      "elapsed_s": 2.156049737939611
+    },
+    {
+      "file": "frame-006.jpg",
+      "elapsed_s": 2.5872001410461962
+    },
+    {
+      "file": "frame-007.jpg",
+      "elapsed_s": 3.009356911992654
+    },
+    {
+      "file": "frame-008.jpg",
+      "elapsed_s": 3.315198653144762
+    },
+    {
+      "file": "frame-009.jpg",
+      "elapsed_s": 3.6306723619345576
+    },
+    {
+      "file": "frame-010.jpg",
+      "elapsed_s": 4.1512077790685
+    },
+    {
+      "file": "frame-011.jpg",
+      "elapsed_s": 4.571116890991107
+    },
+    {
+      "file": "frame-012.jpg",
+      "elapsed_s": 4.883153268136084
+    },
+    {
+      "file": "frame-013.jpg",
+      "elapsed_s": 5.191027017077431
+    },
+    {
+      "file": "frame-014.jpg",
+      "elapsed_s": 5.8152843420393765
+    },
+    {
+      "file": "frame-015.jpg",
+      "elapsed_s": 6.442830790998414
+    },
+    {
+      "file": "frame-016.jpg",
+      "elapsed_s": 6.768162063090131
+    },
+    {
+      "file": "frame-017.jpg",
+      "elapsed_s": 7.082583178998902
+    },
+    {
+      "file": "frame-018.jpg",
+      "elapsed_s": 7.382063891971484
+    },
+    {
+      "file": "frame-019.jpg",
+      "elapsed_s": 7.898556669941172
+    },
+    {
+      "file": "frame-020.jpg",
+      "elapsed_s": 8.215451054973528
+    },
+    {
+      "file": "frame-021.jpg",
+      "elapsed_s": 8.51654719794169
+    },
+    {
+      "file": "frame-022.jpg",
+      "elapsed_s": 8.81982790492475
+    },
+    {
+      "file": "frame-023.jpg",
+      "elapsed_s": 9.346529382048175
+    },
+    {
+      "file": "frame-024.jpg",
+      "elapsed_s": 9.664190778043121
+    },
+    {
+      "file": "frame-025.jpg",
+      "elapsed_s": 9.966067695990205
+    },
+    {
+      "file": "frame-026.jpg",
+      "elapsed_s": 10.269837189931422
+    }
+  ]
+}

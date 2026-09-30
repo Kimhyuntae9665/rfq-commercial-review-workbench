@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "expert_validated": false,
+  "frozen_before_calculation_code_and_model": true,
+  "frozen_at_utc": "2026-09-30T10:13:04.308253+00:00",
+  "runtime_gold_access": false,
+  "cases": [
+    {
+      "id": "G01",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "expected": {
+        "order_qty_units": 2,
+        "delivered_qty_each": 20,
+        "surplus_qty_each": 8,
+        "goods_cost_krw": 240000,
+        "comparison_cost_krw": 245000
+      }
+    },
+    {
+      "id": "G02",
+      "kind": "cost",
+      "supplier": "B",
+      "demand": 12,
+      "expected": {
+        "order_qty_units": 12,
+        "delivered_qty_each": 12,
+        "surplus_qty_each": 0,
+        "goods_cost_krw": 180000,
+        "comparison_cost_krw": 180000
+      }
+    },
+    {
+      "id": "G03",
+      "kind": "cost",
+      "supplier": "C",
+      "demand": 12,
+      "expected": {
+        "goods_cost_krw": 132000,
+        "comparison_cost_krw": null,
+        "comparable": false
+      }
+    },
+    {
+      "id": "G04",
+      "kind": "scenario",
+      "demand": 30,
+      "expected": {
+        "A": 365000,
+        "B": 450000,
+        "C_goods": 330000,
+        "C": null,
+        "cost_order": [
+          "A",
+          "B"
+        ],
+        "completeness": {
+          "comparable": 2,
+          "total": 3
+        }
+      }
+    },
+    {
+      "id": "G05",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 21,
+      "expected": {
+        "order_qty_units": 3,
+        "delivered_qty_each": 30,
+        "surplus_qty_each": 9,
+        "comparison_cost_krw": 365000
+      }
+    },
+    {
+      "id": "G06",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "terms_override": {
+        "moq": 3,
+        "order_multiple": 2
+      },
+      "expected": {
+        "order_qty_units": 4,
+        "delivered_qty_each": 40,
+        "comparison_cost_krw": 485000
+      }
+    },
+    {
+      "id": "G07",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "terms_override": {
+        "price_amount_krw": 10000,
+        "price_basis_each": 1,
+        "units_per_order_unit": 5,
+        "moq": 1,
+        "freight_status": "included",
+        "freight_amount_krw": null
+      },
+      "expected": {
+        "order_qty_units": 3,
+        "delivered_qty_each": 15,
+        "comparison_cost_krw": 150000
+      }
+    },
+    {
+      "id": "G08",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "terms_override": {
+        "other_mandatory_charge_status": "unknown"
+      },
+      "expected": {
+        "comparison_cost_krw": null,
+        "comparable": false
+      }
+    },
+    {
+      "id": "G09",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "terms_override": {
+        "moq_unit": "unknown"
+      },
+      "expected": {
+        "comparison_cost_krw": null,
+        "comparable": false
+      }
+    },
+    {
+      "id": "G10",
+      "kind": "source_validation",
+      "supplier": "A",
+      "field": "price_amount_krw",
+      "proposal_raw": "1",
+      "proposal_quote": "Price amount KRW: 1",
+      "expected": {
+        "valid": false
+      }
+    },
+    {
+      "id": "G11",
+      "kind": "cost",
+      "supplier": "B",
+      "demand": 1,
+      "terms_override": {
+        "price_amount_krw": 1,
+        "price_basis_each": 2
+      },
+      "expected": {
+        "goods_cost_exact": "1/2",
+        "comparison_cost_krw": null,
+        "exclusion_contains": "unsupported_precision"
+      }
+    },
+    {
+      "id": "G12",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "scenario_override": {
+        "scenario_order_date": "2026-11-01"
+      },
+      "expected": {
+        "comparison_cost_krw": null,
+        "exclusion_contains": "expired_price"
+      }
+    },
+    {
+      "id": "G13",
+      "kind": "cost",
+      "supplier": "A",
+      "demand": 12,
+      "terms_override": {
+        "delivery_date": "2026-10-20"
+      },
+      "expected": {
+        "delivery_state": "late",
+        "comparison_cost_krw": 245000
+      }
+    },
+    {
+      "id": "G14",
+      "kind": "lead_time",
+      "supplier": "C",
+      "demand": 12,
+      "expected": {
+        "delivery_state": "conditional_no_eta",
+        "delivery_date": null,
+        "lead_time_condition": "PO 접수 후 7일"
+      }
+    },
+    {
+      "id": "G15",
+      "kind": "stale",
+      "dimensions": [
+        "source_hash",
+        "terms",
+        "demand_qty_each",
+        "scenario_order_date",
+        "rule_version"
+      ],
+      "expected": {
+        "every_changed_dimension_invalidates_review": true
+      }
+    }
+  ]
+}

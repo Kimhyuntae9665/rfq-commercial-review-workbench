@@ -1,0 +1,6 @@
+# Architecture
+Browser native table keeps A/B/C columns fixed. Source drawer restores focus to the opening cell. Server-owned source hashes, Unicode codepoint quote spans and revisions are not model-generated metadata.
+Store uses SQLite and an RLock; reviews and audit insertions are atomic and idempotent. New selected proposals invalidate prior confirmations/packets. Current source identity, selection and active RFQ scenario are rechecked before writes and after inference. Stale packets hide old values/reviews.
+Both demo roles can read this synthetic RFQ and confirm terms. Only reviewer can record packet acknowledgement. Expired sessions return401; valid insufficient role403. This is demonstration identity, not authentication suitable for external deployment.
+Extraction uses one document at a time and whole-cell evidence. Model proposal passes strict schema/source validation; deterministic parsing is visibly separate fallback. Calculation has exact Integer/Fraction arithmetic, server decimal-string values for JS rendering, calendar-date comparisons, and explicit unresolved exclusions.
+No ERP write, shell, Docker socket, supplier contact, legal acceptance, or evaluator labels enter the model.

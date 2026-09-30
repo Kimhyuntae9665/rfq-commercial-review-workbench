@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "rfqs": [
+    {
+      "id": "RFQ-SYN-001",
+      "item_id": "AX-DEMO-BRACKET-01",
+      "title": "라인 센서 브래킷 구매조건 대조",
+      "synthetic": true,
+      "default_scenario": {
+        "demand_qty_each": 12,
+        "scenario_order_date": "2026-10-01",
+        "required_by_date": "2026-10-15"
+      },
+      "comparison_scope": "explicit_tax_excluded_goods_plus_freight_only"
+    }
+  ],
+  "offers": [
+    {
+      "id": "OFFER-A",
+      "supplier_id": "A",
+      "supplier_label": "가상 공급업체 A",
+      "rfq_id": "RFQ-SYN-001",
+      "item_id": "AX-DEMO-BRACKET-01",
+      "document_revision": 1,
+      "format": "kv_text",
+      "content": "RFQ item: AX-DEMO-BRACKET-01\nSupplier: A\nCurrency: KRW\nPrice amount KRW: 120000\nPrice basis each: 10\nOrder unit: pack\nUnits per order unit: 10\nMOQ: 2\nMOQ unit: pack\nOrder multiple: 1\nOrder multiple unit: pack\nFreight status: fixed_per_order\nFreight amount KRW: 5000\nOther mandatory charge status: none_explicit\nTax status: tax_excluded\nValid until: 2026-10-31\nLead time type: absolute_date\nDelivery date: 2026-10-08\nLead time condition: \n",
+      "source_hash": "e095d6cb3c1bc40762ffa7f84f60bb8a554550b6c9967438d3b10fc56407588a"
+    },
+    {
+      "id": "OFFER-B",
+      "supplier_id": "B",
+      "supplier_label": "가상 공급업체 B",
+      "rfq_id": "RFQ-SYN-001",
+      "item_id": "AX-DEMO-BRACKET-01",
+      "document_revision": 1,
+      "format": "kv_csv",
+      "content": "field,value\nRFQ item,AX-DEMO-BRACKET-01\nSupplier,B\nCurrency,KRW\nPrice amount KRW,15000\nPrice basis each,1\nOrder unit,each\nUnits per order unit,1\nMOQ,1\nMOQ unit,each\nOrder multiple,1\nOrder multiple unit,each\nFreight status,included\nFreight amount KRW,\nOther mandatory charge status,none_explicit\nTax status,tax_excluded\nValid until,2026-10-31\nLead time type,absolute_date\nDelivery date,2026-10-07\nLead time condition,\n",
+      "source_hash": "35e39af531478781aeb153d8894eaf2750827faacfaa216ab5e04d79139b684c"
+    },
+    {
+      "id": "OFFER-C",
+      "supplier_id": "C",
+      "supplier_label": "가상 공급업체 C",
+      "rfq_id": "RFQ-SYN-001",
+      "item_id": "AX-DEMO-BRACKET-01",
+      "document_revision": 1,
+      "format": "kv_text",
+      "content": "RFQ item: AX-DEMO-BRACKET-01\nSupplier: C\nCurrency: KRW\nPrice amount KRW: 11000\nPrice basis each: 1\nOrder unit: each\nUnits per order unit: 1\nMOQ: 1\nMOQ unit: each\nOrder multiple: 1\nOrder multiple unit: each\nFreight status: unknown\nFreight amount KRW: \nOther mandatory charge status: none_explicit\nTax status: tax_excluded\nValid until: 2026-10-31\nLead time type: conditional\nDelivery date: \nLead time condition: PO 접수 후 7일\n",
+      "source_hash": "ecfa2918ab481f83023ff4f3868d40eaba92c9e5347f0b54c273c8956bf22ecf"
+    }
+  ]
+}
