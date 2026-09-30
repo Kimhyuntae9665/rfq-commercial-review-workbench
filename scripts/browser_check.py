@@ -96,7 +96,7 @@ def main():
         evidence["checks"].append(label)
 
     def capture(filename):
-        check("!/Bearer\\s+[A-Za-z0-9]|BEGIN [A-Z ]*PRIVATE KEY|[A-Z]:\\\\Users|\\b10\\.0\\.0\\.6\\b/.test(document.body.textContent)", "capture excludes credentials/private host/path")
+        check("!/Bearer\\s+[A-Za-z0-9]|BEGIN [A-Z ]*PRIVATE KEY|[A-Z]:\\\\Users|\\b10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b|\\b192\\.168\\.\\d{1,3}\\.\\d{1,3}\\b|\\b172\\.(?:1[6-9]|2\\d|3[01])\\.\\d{1,3}\\.\\d{1,3}\\b/.test(document.body.textContent)", "capture excludes credentials/private host/path")
         data = base64.b64decode(browser.call("Page.captureScreenshot", format="png", captureBeyondViewport=False)["data"])
         (directory/filename).write_bytes(data)
         evidence["screenshots"].append({"file": filename, "sha256": hashlib.sha256(data).hexdigest(), "actual_ui": True})
@@ -126,6 +126,37 @@ def main():
         for supplier in ['A', 'B', 'C']:
             browser.js(f"document.querySelector('[data-evidence=\"OFFER-{supplier}\"]').click()")
             browser.until("document.querySelector('#evidence-dialog').open && !state.busy")
+
+            if supplier == 'A':
+                # Explicit browser fault injection; no source/model/backend mutation.
+                browser.js("document.querySelector('#close-evidence').focus()")
+                browser.call("Input.dispatchKeyEvent",type="keyDown",key="Tab",code="Tab",windowsVirtualKeyCode=9)
+                browser.call("Input.dispatchKeyEvent",type="keyUp",key="Tab",code="Tab",windowsVirtualKeyCode=9)
+                check("document.querySelector('#evidence-dialog').contains(document.activeElement)", "keyboard focus remains inside the native modal")
+                ax=browser.call("Accessibility.getFullAXTree")["nodes"]
+                named=[node for node in ax if not node.get("ignored") and node.get("role",{}).get("value")=="dialog"]
+                assert len(named)==1 and named[0].get("name",{}).get("value")==browser.js("document.querySelector('#evidence-title').textContent"),"Native modal accessible name mismatch"
+                evidence["checks"].append("native modal accessible name equals its supplier evidence heading")
+                browser.js("window.testOriginalSpan=state.evidence.proposal.fields.currency.span_start;state.evidence.proposal.fields.currency.span_start=-1;document.querySelector('[data-field=currency]').click()")
+                check("document.querySelector('#evidence-dialog').open && !document.querySelector('#evidence-error').hidden && document.querySelector('#evidence-error').textContent.includes('인용 위치를 검증할 수 없습니다') && document.querySelector('#evidence-error').getAttribute('role')==='alert' && document.querySelector('#evidence-error').getAttribute('aria-live')==='assertive'", "mock invalid source span announces a visible alert inside the open modal")
+                check("(()=>{const r=document.querySelector('#evidence-error').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})()", "modal source error is scrolled into the actual viewport")
+                ax_error=browser.call("Accessibility.getFullAXTree")["nodes"]
+                assert any(not node.get("ignored") and node.get("role",{}).get("value")=="alert" for node in ax_error),"Modal alert is absent from accessibility tree"
+                evidence["checks"].append("modal source alert is exposed in the accessibility tree")
+                browser.js("state.evidence.proposal.fields.currency.span_start=window.testOriginalSpan;delete window.testOriginalSpan;document.querySelector('[data-field=currency]').click()")
+                check("document.querySelector('#evidence-error').hidden && document.querySelector('#evidence-error').textContent==='' && !!document.querySelector('#source-content mark')", "valid quote clears the prior modal source error")
+                # HTTP confirmation failure mock contains HTML-like text on purpose.
+                # It intercepts the POST before sending it, preserving confirmation.
+                browser.js("window.testConfirmFetch=window.fetch.bind(window);window.fetch=(path,options)=>String(path).endsWith('/confirm')?Promise.resolve(new Response(JSON.stringify({error:'모의 확인 오류 <b data-modal-injection>검토</b>'}),{status:503,headers:{'Content-Type':'application/json'}})):window.testConfirmFetch(path,options);document.querySelector('#terms-ack').checked=true;document.querySelector('#terms-ack').dispatchEvent(new Event('change'));document.querySelector('#confirm-terms').click()")
+                browser.until("!state.busy && !document.querySelector('#evidence-error').hidden")
+                check("document.querySelector('#evidence-dialog').open && document.querySelector('#evidence-error').textContent.includes('모의 확인 오류 <b') && !document.querySelector('[data-modal-injection]') && !state.proposals.find(p=>p.offer_id==='OFFER-A').confirmation", "mock HTTP confirmation failure remains visible, plaintext and unconfirmed inside the open modal")
+                browser.js("window.fetch=window.testConfirmFetch;delete window.testConfirmFetch;document.querySelector('#close-evidence').click()")
+                browser.until("!document.querySelector('#evidence-dialog').open && document.querySelector('#evidence-error').hidden")
+                check("document.querySelector('#evidence-error').hidden && document.querySelector('#evidence-error').textContent===''", "closing the dialog clears its local error")
+                browser.js("document.querySelector('[data-evidence=\"OFFER-A\"]').click()")
+                browser.until("document.querySelector('#evidence-dialog').open && !state.busy")
+                check("document.querySelector('#evidence-error').hidden && !document.querySelector('#terms-ack').checked", "reopening evidence has no stale modal error or acknowledgement")
+
             check("document.querySelector('#confirm-terms').disabled", "terms acknowledgement required")
             check("document.querySelectorAll('.quote-button').length===17", "all 17 full original field quotes present")
             browser.js("document.querySelector('.quote-button').click()")
