@@ -1,4 +1,11 @@
 # RFQ Commercial Review Workbench
+
+![CPU application and optional local model architecture](docs/architecture.png)
+
+[Editable SVG](docs/architecture.svg) · [Architecture provenance](docs/architecture-provenance.md)
+
+Browser and frozen JSON quotes feed Python source validation. Human terms confirmation precedes Fraction cost calculation; a separate packet review and audit persist in SQLite. Ollama/Qwen extraction is optional and serial.
+
 제조업 구매 담당자가 합성 공급업체 견적의 포장·MOQ·운임 조건을 확인하고, 수요 시나리오별 한정 비용을 검토하는 로컬 업무 데모입니다. 업체 선정·발주·견적 수락을 수행하지 않습니다.
 
 ## 업무와 공개 기업 사례
