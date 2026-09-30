@@ -40,8 +40,14 @@ function updateConfirm(){const p=state.evidence?.proposal;$('confirm-terms').dis
 $('extract-all').addEventListener('click',()=>run(extractAll));
 $('profile').addEventListener('change',()=>run(()=>signIn($('profile').value)));
 $('scenario-form').addEventListener('submit',e=>{e.preventDefault();run(async()=>{const result=await api(`/api/rfqs/${RFQ}/calculate`,{scenario:scenario()});state.packet=result.packet;$('packet-ack').checked=false;await loadHistory();notice(`현재 조건으로 계산했습니다. 비용이 완전한 제안 ${state.packet.completeness.comparable}/${state.packet.completeness.total}건에 한정된 비교입니다.`);});});
-['demand','order-date','required-date'].forEach(id=>$(id).addEventListener('input',()=>{$('packet-ack').checked=false;render();}));
-document.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>{$('demand').value=b.dataset.qty;$('packet-ack').checked=false;render();}));
+function scenarioEdited(){
+  $('packet-ack').checked=false;
+  render();
+  if(state.packet&&!currentPacket())notice('조건 변경 · 현재 조건으로 다시 계산하세요. 이전 검토 기록은 이력에 남습니다.');
+  else if(state.packet)notice('원래 조건으로 돌아왔습니다. 현재 비교 패킷과 검토 상태를 확인하세요.');
+}
+['demand','order-date','required-date'].forEach(id=>$(id).addEventListener('input',scenarioEdited));
+document.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>{$('demand').value=b.dataset.qty;scenarioEdited();}));
 $('packet-ack').addEventListener('change',()=>renderPacket(currentPacket()));
 $('review-form').addEventListener('submit',e=>{e.preventDefault();run(async()=>{const p=currentPacket();if(!p||!$('packet-ack').checked)throw new Error('현재 비교 패킷과 미확인 조건을 먼저 확인하세요.');const result=await api(`/api/packets/${p.id}/review`,{decision:$('decision').value,comment:$('review-comment').value,expected_fingerprint:p.fingerprint});state.packet={...(await api(`/api/packets/${p.id}`)).packet,review:result.review};await loadHistory();notice('현재 비교 패킷의 검토 확인을 기록했습니다.');});});
 $('confirm-form').addEventListener('submit',e=>{e.preventDefault();run(async()=>{const p=state.evidence?.proposal;if(!p||!$('terms-ack').checked)throw new Error('원문 인용과 추출값을 먼저 확인하세요.');await api(`/api/proposals/${p.id}/confirm`,{manual_confirmation:$('manual-ack').checked});await loadRfq();await loadHistory();$('evidence-dialog').close();state.packet=null;notice('현재 추출의 원문 확인을 기록했습니다. 세 제안 모두 확인한 뒤 비교를 실행하세요.');});});

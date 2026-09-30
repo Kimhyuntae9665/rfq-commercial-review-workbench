@@ -45,6 +45,8 @@
     "packet acknowledgement is separate human gate",
     "review history remains visible after packet acknowledgement",
     "capture excludes credentials/private host/path",
+    "scenario change replaces prior review success banner with recalculation guidance",
+    "historical review receipt remains visible after scenario change",
     "quantity change hides previous calculation and review",
     "capture excludes credentials/private host/path",
     "30-demand reverses comparable cost order and requires fresh review",
@@ -58,6 +60,8 @@
     "task/table/evidence body font at least 14px",
     "visible task text contrast at least 4.5",
     "capture excludes credentials/private host/path",
+    "date edit also replaces the prior current-packet success banner",
+    "restored date restores current-packet state without a stale success message",
     "200 percent zoom-equivalent reflow has no page overflow",
     "capture excludes credentials/private host/path",
     "mobile has no horizontal page overflow",
@@ -66,47 +70,47 @@
   "screenshots": [
     {
       "file": "00-rfq-selection.png",
-      "sha256": "3be32a438d3796d5bac0c653251935dd9952107eddef9c62e4ba455623528da0",
+      "sha256": "36db7bff10e37c2ae5d12f27a652eb15f876698ca3ce22d7617a4e51d1af317e",
       "actual_ui": true
     },
     {
       "file": "01-source-confirmation.png",
-      "sha256": "d3ded3ebcba74f1dce52f6f1edc0ecf0121e55a5379db035a5fddd52a117f446",
+      "sha256": "cf3436bcb7e9c2ebee4342eaa451120e64a819adf7e40bb9bafbbd7ecf1d33c0",
       "actual_ui": true
     },
     {
       "file": "02-unknown-freight-source.png",
-      "sha256": "d0f3ff84b34284d2f3e607d25a496dfea375af1a9ef951e33d34b5e628e33b6a",
+      "sha256": "94ffa9e4b70d3e2f2a1a8a004e430d99ae8a89d530ce0579e74193e3c55e1fbe",
       "actual_ui": true
     },
     {
       "file": "02-demand-12.png",
-      "sha256": "1c5659c7734df18809e9a1a4efb33a9575836c386b9e16c1c78671780fc5c7dc",
+      "sha256": "fcfae075325eab6ecc47b5682186967860732449a894cb92d9a37657d702bffd",
       "actual_ui": true
     },
     {
       "file": "03-packet-reviewed.png",
-      "sha256": "49e0a8432d47717ae6a932a43bd34b07fd1f51cbcea48eefef8e8aa0373916fb",
+      "sha256": "ca2e52c19394526c796a37f0b4fd4d0cf1beaac7dac157472b93df998e1e80d8",
       "actual_ui": true
     },
     {
       "file": "04-changed-scenario.png",
-      "sha256": "775a18b0df85729ca494543b877c125807c4cdf2b3ad6f0d312e7a7081ade36d",
+      "sha256": "69ade5737096498c1ba13ae31a2874cdce5362825233208ab2a5a9ecb4c8ee27",
       "actual_ui": true
     },
     {
       "file": "05-demand-30.png",
-      "sha256": "ea4180a8140c7002162400af1be4c9550b778b3ceefba9fe124e0b49a267c9fc",
+      "sha256": "a54a19b1ed6e15848ba971daef018b16cfbae7910256cc56b820d3456e2360d8",
       "actual_ui": true
     },
     {
       "file": "06-zoom-200.png",
-      "sha256": "4593d7450e5785c329a3a913e8bdbf8b57e26ceb9541565c6b18be2e7988ea1b",
+      "sha256": "b5d46992548987a7300470a12e9a49e2290c039684e0195371836614793dc6e4",
       "actual_ui": true
     },
     {
       "file": "07-mobile.png",
-      "sha256": "a4ed51e799f55bf7a21249c0b4c6f0499181e8688b43691d913f1055f8e7b33a",
+      "sha256": "bab28d3e56f4438e1057fde2c673079c8a816a59be7b943447882dfb1bcf7f67",
       "actual_ui": true
     }
   ],
@@ -143,7 +147,7 @@
       {
         "file": "frame-05.jpg",
         "source_capture": "04-changed-scenario.png",
-        "sha256": "b3f4c7243dcaf6e517604ae3a924c413573949bcfb85c35f936c6b017a7d4bed"
+        "sha256": "275040345274940aadad064b838d849cbfa0c2cec5818f306443b46e34f51a04"
       },
       {
         "file": "frame-06.jpg",
