@@ -1,0 +1,157 @@
+{
+  "actual_browser": true,
+  "synthetic": true,
+  "model_requests": 0,
+  "checks": [
+    "capture excludes credentials/private host/path",
+    "baseline mode default with explicit existing-local-model option",
+    "unconfirmed calculation gate",
+    "extraction mode is disabled while sequential extraction is busy",
+    "per-offer sequential progress and mode unlock",
+    "fresh extraction requires human confirmation",
+    "baseline only; no model request",
+    "cards identify baseline results unambiguously",
+    "model failure label requires manual fallback confirmation (browser display-boundary regression)",
+    "source-verified result label differs from baseline (browser display-boundary regression)",
+    "keyboard focus remains inside the native modal",
+    "native modal accessible name equals its supplier evidence heading",
+    "mock invalid source span announces a visible alert inside the open modal",
+    "modal source error is scrolled into the actual viewport",
+    "modal source alert is exposed in the accessibility tree",
+    "valid quote clears the prior modal source error",
+    "mock HTTP confirmation failure remains visible, plaintext and unconfirmed inside the open modal",
+    "closing the dialog clears its local error",
+    "reopening evidence has no stale modal error or acknowledgement",
+    "terms acknowledgement required",
+    "all 17 full original field quotes present",
+    "Unicode source span exact quote",
+    "terms acknowledgement required",
+    "all 17 full original field quotes present",
+    "Unicode source span exact quote",
+    "terms acknowledgement required",
+    "all 17 full original field quotes present",
+    "Unicode source span exact quote",
+    "Korean quote span uses Unicode code points",
+    "capture excludes credentials/private host/path",
+    "all three confirmed unlock deterministic calculation",
+    "12-demand comparable cost order B then A",
+    "limited 2/3 comparison completeness",
+    "unknown freight stays null",
+    "12-demand exact integer rendered costs",
+    "buyer cannot record final packet review",
+    "capture excludes credentials/private host/path",
+    "capture excludes credentials/private host/path",
+    "reviewer opens same current packet",
+    "packet acknowledgement is separate human gate",
+    "review history remains visible after packet acknowledgement",
+    "capture excludes credentials/private host/path",
+    "quantity change hides previous calculation and review",
+    "capture excludes credentials/private host/path",
+    "30-demand reverses comparable cost order and requires fresh review",
+    "30-demand exact integer rendered costs",
+    "hostile unsupported unit renders literally (browser display-boundary regression)",
+    "above-2^53 decimal strings render exactly (browser display-boundary regression)",
+    "calendar dates remain unchanged in America/Los_Angeles",
+    "long Korean condition stays inside table container (browser display-boundary regression)",
+    "drawer closes with focus returning to source trigger",
+    "desktop has no horizontal page overflow",
+    "task/table/evidence body font at least 14px",
+    "visible task text contrast at least 4.5",
+    "capture excludes credentials/private host/path",
+    "200 percent zoom-equivalent reflow has no page overflow",
+    "capture excludes credentials/private host/path",
+    "mobile has no horizontal page overflow",
+    "capture excludes credentials/private host/path"
+  ],
+  "screenshots": [
+    {
+      "file": "00-rfq-selection.png",
+      "sha256": "3be32a438d3796d5bac0c653251935dd9952107eddef9c62e4ba455623528da0",
+      "actual_ui": true
+    },
+    {
+      "file": "01-source-confirmation.png",
+      "sha256": "d3ded3ebcba74f1dce52f6f1edc0ecf0121e55a5379db035a5fddd52a117f446",
+      "actual_ui": true
+    },
+    {
+      "file": "02-unknown-freight-source.png",
+      "sha256": "d0f3ff84b34284d2f3e607d25a496dfea375af1a9ef951e33d34b5e628e33b6a",
+      "actual_ui": true
+    },
+    {
+      "file": "02-demand-12.png",
+      "sha256": "1c5659c7734df18809e9a1a4efb33a9575836c386b9e16c1c78671780fc5c7dc",
+      "actual_ui": true
+    },
+    {
+      "file": "03-packet-reviewed.png",
+      "sha256": "49e0a8432d47717ae6a932a43bd34b07fd1f51cbcea48eefef8e8aa0373916fb",
+      "actual_ui": true
+    },
+    {
+      "file": "04-changed-scenario.png",
+      "sha256": "775a18b0df85729ca494543b877c125807c4cdf2b3ad6f0d312e7a7081ade36d",
+      "actual_ui": true
+    },
+    {
+      "file": "05-demand-30.png",
+      "sha256": "ea4180a8140c7002162400af1be4c9550b778b3ceefba9fe124e0b49a267c9fc",
+      "actual_ui": true
+    },
+    {
+      "file": "06-zoom-200.png",
+      "sha256": "4593d7450e5785c329a3a913e8bdbf8b57e26ceb9541565c6b18be2e7988ea1b",
+      "actual_ui": true
+    },
+    {
+      "file": "07-mobile.png",
+      "sha256": "a4ed51e799f55bf7a21249c0b4c6f0499181e8688b43691d913f1055f8e7b33a",
+      "actual_ui": true
+    }
+  ],
+  "minimum_checked_text_contrast": 4.563,
+  "video": {
+    "file": "video/workflow.mp4",
+    "method": "actual browser viewport frames, 2-second holds, no added overlays",
+    "frames": [
+      {
+        "file": "frame-00.jpg",
+        "source_capture": "00-rfq-selection.png",
+        "sha256": "e70f186c4e2d24ca69385e3023d6215abdf73bc3e4bea9fd3cfc0bfb5079f5dc"
+      },
+      {
+        "file": "frame-01.jpg",
+        "source_capture": "01-source-confirmation.png",
+        "sha256": "1030bddbd59e376425e5f83a08cd66695329035f6a06481ff7af297c37856061"
+      },
+      {
+        "file": "frame-02.jpg",
+        "source_capture": "02-unknown-freight-source.png",
+        "sha256": "ae24ceb36d103ec994e98cab44ac69bed85005b72c0f1f946eebce965f86fb80"
+      },
+      {
+        "file": "frame-03.jpg",
+        "source_capture": "02-demand-12.png",
+        "sha256": "ab0f65abfe92d28b8f1bda1deb30ac90944b6dd4f89caeda5ff6516138741c37"
+      },
+      {
+        "file": "frame-04.jpg",
+        "source_capture": "03-packet-reviewed.png",
+        "sha256": "0bb79b7287dc3485bb15b670bbda8e2821b6c1eb1defbc23452fa51e711f77ee"
+      },
+      {
+        "file": "frame-05.jpg",
+        "source_capture": "04-changed-scenario.png",
+        "sha256": "b3f4c7243dcaf6e517604ae3a924c413573949bcfb85c35f936c6b017a7d4bed"
+      },
+      {
+        "file": "frame-06.jpg",
+        "source_capture": "05-demand-30.png",
+        "sha256": "29f51b9a45cadc379fe9a5764378fec9c828823e7dbf14a6dbbbf3d4c245d276"
+      }
+    ],
+    "model_requests": 0
+  },
+  "passed": true
+}

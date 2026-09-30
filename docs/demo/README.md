@@ -1,4 +1,5 @@
-# Actual UI gallery
+# Historical UI gallery · previous layout
+Current P09-style UI screenshots and video are in [refit](refit/README.md). The images below remain evidence of the earlier implementation and model run, not the current layout.
 01–07 are actual browser captures using deterministic baseline extraction. Browser hostile-markup/large-integer/longlabel assertions use explicit temporary display-state mocks; those assertions are not screenshots of successful live inference.
 08–12 are actual GET displays of three stored qwen3:4b API proposals which passed full-cell source validation. Source confirmation, cost12→30 and packet acknowledgement were performed by an automated synthetic demo script. Recording made0modelrequests; earlier API extraction made3 sequential requests.
 No images were composited, success text edited, or private account/PC/SSH information included. Viewports contain only synthetic demo identities and synthetic source data.

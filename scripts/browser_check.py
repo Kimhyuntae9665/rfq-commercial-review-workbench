@@ -8,6 +8,7 @@ import base64
 import hashlib
 import json
 import os
+import subprocess
 import socket
 import struct
 import urllib.request
@@ -15,7 +16,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, quote
 
 ROOT = Path(__file__).resolve().parents[1]
-APP = "http://127.0.0.1:19083"
+APP = os.environ.get("RFQ_BROWSER_APP", "http://127.0.0.1:19083")
 
 
 class Browser:
@@ -87,9 +88,12 @@ def main():
     request = urllib.request.Request(args.cdp+"/json/new?"+quote("about:blank", safe=""), method="PUT")
     with urllib.request.urlopen(request, timeout=10) as response: page = json.load(response)
     browser = Browser(page["webSocketDebuggerUrl"])
-    directory = ROOT/"artifacts"/"browser"
+    directory = Path(os.environ.get("RFQ_BROWSER_OUTPUT", str(ROOT/"artifacts"/"browser")))
     directory.mkdir(parents=True, exist_ok=True)
     evidence = {"actual_browser": True, "synthetic": True, "model_requests": 0, "checks": [], "screenshots": []}
+    video_frames = []
+    frame_dir = directory/"video"/"frames"
+    frame_dir.mkdir(parents=True, exist_ok=True)
 
     def check(condition, label):
         assert browser.js(condition), label
@@ -97,9 +101,15 @@ def main():
 
     def capture(filename):
         check("!/Bearer\\s+[A-Za-z0-9]|BEGIN [A-Z ]*PRIVATE KEY|[A-Z]:\\\\Users|\\b10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b|\\b192\\.168\\.\\d{1,3}\\.\\d{1,3}\\b|\\b172\\.(?:1[6-9]|2\\d|3[01])\\.\\d{1,3}\\.\\d{1,3}\\b/.test(document.body.textContent)", "capture excludes credentials/private host/path")
-        data = base64.b64decode(browser.call("Page.captureScreenshot", format="png", captureBeyondViewport=False)["data"])
+        data = base64.b64decode(browser.call("Page.captureScreenshot", format="png", captureBeyondViewport=True)["data"])
         (directory/filename).write_bytes(data)
         evidence["screenshots"].append({"file": filename, "sha256": hashlib.sha256(data).hexdigest(), "actual_ui": True})
+        if filename not in {"06-zoom-200.png", "07-mobile.png"}:
+            frame_name = f"frame-{len(video_frames):02d}.jpg"
+            jpeg = base64.b64decode(browser.call("Page.captureScreenshot", format="jpeg", quality=82, captureBeyondViewport=False)["data"])
+            (frame_dir/frame_name).write_bytes(jpeg)
+            video_frames.append({"file": frame_name, "source_capture": filename,
+                                 "sha256": hashlib.sha256(jpeg).hexdigest()})
 
     try:
         browser.call("Page.enable")
@@ -107,6 +117,7 @@ def main():
         browser.call("Emulation.setDeviceMetricsOverride", width=1440, height=1100, deviceScaleFactor=1, mobile=False)
         browser.call("Page.navigate", url=APP)
         browser.until("typeof state!=='undefined' && state.token && !state.busy && state.offers.length===3")
+        capture("00-rfq-selection.png")
         check("document.querySelector('#extract-mode').value==='baseline' && document.querySelector('#extract-mode option[value=model]').textContent.includes('localhost')", "baseline mode default with explicit existing-local-model option")
         check("document.querySelector('#calculate').disabled || state.proposals.every(p=>p.confirmation)", "unconfirmed calculation gate")
         browser.js("window.testProgress=[];window.testNoticeObserver=new MutationObserver(()=>window.testProgress.push(document.querySelector('#notice').textContent));window.testNoticeObserver.observe(document.querySelector('#notice'),{childList:true,subtree:true,characterData:true});")
@@ -175,6 +186,11 @@ def main():
         check("state.packet.rows.find(r=>r.supplier_id==='C').exact_values.freight_cost_krw===null", "unknown freight stays null")
         check("document.querySelector('#comparison-table').textContent.includes('245,000원') && document.querySelector('#comparison-table').textContent.includes('180,000원')", "12-demand exact integer rendered costs")
         check("document.querySelector('#review-form').hidden", "buyer cannot record final packet review")
+        browser.js("document.querySelector('[data-evidence=\"OFFER-C\"]').click()")
+        browser.until("document.querySelector('#evidence-dialog').open && !state.busy")
+        capture("02-unknown-freight-source.png")
+        browser.js("document.querySelector('#close-evidence').click()")
+        browser.until("!document.querySelector('#evidence-dialog').open")
         capture("02-demand-12.png")
         browser.js("document.querySelector('#profile').value='reviewer';document.querySelector('#profile').dispatchEvent(new Event('change'))")
         browser.until("!state.busy && state.principal.role==='reviewer'")
@@ -182,6 +198,7 @@ def main():
         check("document.querySelector('#review-submit').disabled", "packet acknowledgement is separate human gate")
         browser.js("document.querySelector('#packet-ack').checked=true;document.querySelector('#packet-ack').dispatchEvent(new Event('change'));document.querySelector('#review-submit').click()")
         browser.until("!state.busy && !!state.packet.review")
+        check("document.querySelector('#history').textContent.trim().length>0", "review history remains visible after packet acknowledgement")
         capture("03-packet-reviewed.png")
         browser.js("document.querySelector('[data-qty=\"30\"]').click()")
         check("!currentPacket() && document.querySelector('#review-form').hidden && !document.querySelector('#comparison-table').textContent.includes('245,000원')", "quantity change hides previous calculation and review")
@@ -220,6 +237,18 @@ def main():
         browser.call("Emulation.setDeviceMetricsOverride", width=390, height=844, deviceScaleFactor=1, mobile=True)
         check("document.documentElement.scrollWidth<=innerWidth", "mobile has no horizontal page overflow")
         capture("07-mobile.png")
+        manifest = directory/"video"/"frames.ffconcat"
+        lines = ["ffconcat version 1.0"]
+        for frame in video_frames:
+            lines.extend([f"file 'frames/{frame['file']}'", "duration 2.000"])
+        lines.append(f"file 'frames/{video_frames[-1]['file']}'")
+        manifest.write_text("\n".join(lines)+"\n", encoding="utf-8")
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-safe", "0", "-f", "concat", "-i",
+                        str(manifest), "-vf", "fps=24,format=yuv420p", "-c:v", "libx264",
+                        "-preset", "veryfast", "-crf", "24", "-movflags", "+faststart",
+                        str(directory/"video"/"workflow.mp4")], check=True)
+        evidence["video"] = {"file": "video/workflow.mp4", "method": "actual browser viewport frames, 2-second holds, no added overlays",
+                             "frames": video_frames, "model_requests": 0}
         evidence["passed"] = True
         (directory/"checks.json").write_text(json.dumps(evidence, ensure_ascii=False, indent=2), encoding="utf-8")
         print(json.dumps({"passed": True, "checks": len(evidence["checks"]), "screenshots": len(evidence["screenshots"]), "model_requests": 0}, ensure_ascii=False))

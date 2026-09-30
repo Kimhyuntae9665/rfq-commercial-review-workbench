@@ -25,9 +25,23 @@ BMW Group Purchasing의 공개 Offer Analyst 사례에서 공급업체 제안 �
 4. 검토 담당자가 특정 패킷의 검토 기록을 남깁니다. 구매 승인 버튼은 없습니다.
 5. 원문·추출 선택·수량·날짜·산식 버전이 바뀌면 기존 검토는 stale입니다.
 
-![수요12 비교](docs/demo/02-demand-12.png)
-![수요30 비교](docs/demo/05-demand-30.png)
-[실제 화면12개 및 검증 구분](docs/demo/README.md) · [실제 동작 영상](docs/demo/video/workflow.mp4)
+### 현재 화면 · P09 v2 스타일
+
+아래 9장은 합성 데이터와 **규칙 추출**을 사용해 실제 Chrome에서 재현한 각기 다른 업무 상태입니다. 이번 화면 갱신에서는 모델을 호출하지 않았습니다. 모델 추출 결과는 아래의 과거 화면 기록과 [평가 문서](docs/evaluation.md)에 별도로 남겨 둡니다.
+
+| 단계 | 실제 화면 |
+|---|---|
+| RFQ·역할·수량 선택 | ![RFQ 선택과 두 패널](docs/demo/refit/00-rfq-selection.png) |
+| 전체 인용문 확인 | ![원문 인용과 추출값 확인](docs/demo/refit/01-source-confirmation.png) |
+| C 운임 미확정 근거 | ![운임 미확정 원문](docs/demo/refit/02-unknown-freight-source.png) |
+| 수요 12개 비교 | ![12개 한정 비용 순서](docs/demo/refit/02-demand-12.png) |
+| 사람의 검토 기록 | ![비교 패킷 검토와 이력](docs/demo/refit/03-packet-reviewed.png) |
+| 수량 변경 시 검토 무효화 | ![변경된 조건과 재계산 대기](docs/demo/refit/04-changed-scenario.png) |
+| 수요 30개 순서 역전 | ![30개 한정 비용 순서](docs/demo/refit/05-demand-30.png) |
+| 200% 상당 화면 폭 | ![좁아진 데스크톱 재배치](docs/demo/refit/06-zoom-200.png) |
+| 모바일 390px | ![390px 모바일 화면](docs/demo/refit/07-mobile.png) |
+
+[현재 영상: 실제 브라우저 프레임 순서](docs/demo/refit/video/workflow.mp4) · [캡처·해시·검사 내역](docs/demo/refit/README.md) · [이전 UI의 모델 실측 화면과 영상](docs/demo/README.md) — **과거 레이아웃**
 
 ## 비용 계약
 KRW 단일 통화이며 명시된 세금 별도 상품+운임만 비교합니다. 세금 포함/미상, 미상 필수 비용, 별도 취급료, 만료 가격, 모호한 MOQ 단위, 원 미만 Fraction은 완전 비교에서 제외됩니다. 미상 운임은 0이 아닙니다.

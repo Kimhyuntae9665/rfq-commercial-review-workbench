@@ -1,0 +1,16 @@
+ffconcat version 1.0
+file 'frames/frame-00.jpg'
+duration 2.000
+file 'frames/frame-01.jpg'
+duration 2.000
+file 'frames/frame-02.jpg'
+duration 2.000
+file 'frames/frame-03.jpg'
+duration 2.000
+file 'frames/frame-04.jpg'
+duration 2.000
+file 'frames/frame-05.jpg'
+duration 2.000
+file 'frames/frame-06.jpg'
+duration 2.000
+file 'frames/frame-06.jpg'

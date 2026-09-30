@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RFQ 구매조건 검토</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RFQ 구매조건 검토</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/refit.css"><script src="/app.js" defer></script></head>
 <body>
-<header class="topbar"><div class="brandmark" aria-hidden="true">AX</div><div><strong>RFQ 구매조건 검토</strong><span class="header-sub">Commercial review workbench · 합성 업무 데모</span></div><div class="identity"><label for="profile">데모 신원</label><select id="profile"><option value="buyer">구매 담당자</option><option value="reviewer">검토 담당자</option></select><span class="identity-note">실제 SSO 아님</span></div></header>
 <main>
-<section class="title-row"><div><div class="eyebrow">RFQ-SYN-001 · AX-DEMO-BRACKET-01</div><h1>라인 센서 브래킷 구매조건 대조</h1><p>포장·최소 주문·운임 조건을 확인하고, 명시된 세전 비용만 비교합니다.</p></div><span class="scope-badge">합성 제안서 3건</span></section>
+<section class="title-row"><div><h1>공급업체 견적 비교</h1><p>RFQ-SYN-001 · AX-DEMO-BRACKET-01 · 합성 제안서 3건</p></div></section>
+<header class="topbar"><div class="identity"><label for="profile">데모 역할</label><select id="profile"><option value="buyer">구매 담당자</option><option value="reviewer">검토 담당자</option></select><span class="identity-note">실제 인증 아님</span></div><span class="header-sub">명시된 세전 상품·운임만 비교 · 발주 기능 없음</span></header>
 <nav class="workflow" aria-label="검토 단계"><div id="step-terms"><span>1</span><strong>원문 추출 확인</strong><small id="terms-count">0 / 3 확인</small></div><div id="step-calc"><span>2</span><strong>세전 비용 비교</strong><small id="calc-label">원문 확인 후 실행</small></div><div id="step-review"><span>3</span><strong>검토 패킷 확인</strong><small id="review-label">검토 담당자 단계</small></div></nav>
 <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
 <div class="workspace">

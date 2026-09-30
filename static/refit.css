@@ -1,0 +1,47 @@
+/* P09 v2 desk visual tokens; P03 retains its comparison and review behavior. */
+:root{--ink:#142635;--muted:#405463;--line:#9eaeba;--primary:#173f60;--evidence:#e7edf1;--teal:#173f60;--light:#e7edf1;background:#f1f4f6;color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body{background:#f1f4f6;color:var(--ink)}
+main{max-width:1120px;padding:24px;margin:0 auto}
+h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin:0 0 10px;white-space:nowrap}
+h2{font-size:20px}h3{font-size:18px}
+.title-row{display:block;margin:0 0 14px}.title-row p{font-size:16px;color:var(--muted);line-height:1.5}
+.topbar{height:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0;margin:0 0 16px;background:transparent;border:0}
+.identity{margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.identity label{font-size:16px}.identity select{width:160px}
+.identity-note,.header-sub{display:inline;color:var(--muted);font-size:14px;margin:0}
+button,input,select,textarea{border-radius:5px}
+button{font-weight:600;min-height:39px}
+.primary,.presets button.active{background:#173f60;color:white;border-color:#173f60}
+.secondary,.presets button,.text-button{background:white;color:#142635;border-color:#566b7a}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #b34100;outline-offset:3px}
+.workflow{display:flex;flex-wrap:wrap;gap:10px;border:0;background:transparent;border-radius:0;margin:0 0 18px;overflow:visible}
+.workflow>div{display:flex;align-items:center;gap:8px;flex:1 1 185px;padding:9px 12px;border:1px solid #9eaeba;border-radius:5px;background:white}
+.workflow>div:last-child{border:1px solid #9eaeba}
+.workflow span{width:24px;height:24px;border-color:#566b7a;color:#142635}.workflow small{font-size:13px;margin-left:auto;color:#405463}
+.workflow .done{background:#e7edf1}.workflow .done span{background:#173f60;border-color:#173f60}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.panel{min-width:0;padding:16px;background:white;border:1px solid #9eaeba;border-radius:6px}
+.comparison{min-width:0}.scenario{min-width:0}.panel-title{margin-bottom:14px}.panel-title p{margin-top:4px}
+.comparison>.panel-title{display:block}.comparison>.panel-title .extraction-controls{margin-top:12px}
+.review-column{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.review-column>.history-panel{grid-column:1/-1}
+.offer-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:20px}
+.offer-card{min-width:0;padding:10px;background:white;border-color:#9eaeba}
+.offer-card button{white-space:normal;overflow-wrap:anywhere}
+.extraction-controls{flex-wrap:wrap}.extraction-controls select{width:auto;min-width:185px;flex:1}.extraction-controls button{margin-left:auto}
+.scope-note p,.cost-row td,.extraction-origin.verified{color:#173f60}
+.cost-order{background:#e7edf1;border-left-color:#173f60}.cost-order span{color:#142635}
+.cost-row td{background:#e7edf1}.cost-row td.excluded{background:#fff4df;color:#694815}
+.status-pill.good{background:#e7edf1;color:#173f60}.status-pill.warning{background:#fff4df;color:#694815}
+.notice{background:#e7edf1;border-color:#9eaeba;color:#142635}
+.table-wrap{max-width:100%;overflow-x:auto}#comparison-table{min-width:575px}
+thead th{background:#e7edf1;color:#142635}tbody th{color:#142635}th,td{border-bottom-color:#cad4db}
+.unknown-card{border-left-color:#173f60}.unknown-card strong{color:#142635}.unknown-card p{color:#405463}
+.history{max-height:340px}.history li{border-left-color:#9eaeba}
+.evidence-dialog{border:1px solid #9eaeba;border-radius:6px;box-shadow:0 12px 42px #14263545}
+.evidence-dialog::backdrop{background:#14263588}.evidence-meta{background:#e7edf1;color:#142635}
+.evidence-layout{grid-template-columns:1fr 1fr}.evidence-layout>section{min-width:0;border:1px solid #9eaeba;border-radius:6px;padding:12px;background:white}
+pre,.quote-button{background:#e7edf1;border-color:#9eaeba;color:#142635}
+.drawer-actions{background:#f1f4f6}.check-row input{accent-color:#173f60}
+footer{border-top:1px solid #9eaeba;margin-top:20px}
+@media(max-width:800px){main{padding:20px}.workspace{grid-template-columns:1fr}.review-column{grid-column:auto;grid-template-columns:1fr}.review-column>.history-panel{grid-column:auto}.scenario form{display:block}.scenario label{display:block;margin:14px 0 7px}.scenario .presets{margin-top:8px}.scenario .primary{width:100%}.source-summary{display:flex}.comparison>.panel-title{flex-wrap:wrap}.evidence-layout{grid-template-columns:1fr}}
+@media(max-width:650px){main{padding:16px}h1{font-size:25px}.title-row p{font-size:14px}.topbar{align-items:flex-start;flex-direction:column;gap:5px}.workflow{gap:7px}.workflow>div{flex-basis:100%;padding:7px 10px}.workflow small{margin-left:auto}.offer-cards{grid-template-columns:1fr}.offer-card{display:grid;grid-template-columns:1fr auto;gap:2px 8px}.offer-card strong,.offer-card .source-format,.offer-card .extraction-origin{grid-column:1}.offer-card .status-pill{grid-column:2;grid-row:1}.offer-card button{grid-column:1/-1;margin-top:4px}.evidence-dialog{width:calc(100vw - 12px);max-width:calc(100vw - 12px)}.drawer-actions{gap:8px}.drawer-actions .primary{width:100%}}
