@@ -9,7 +9,7 @@ import time
 import uuid
 from pathlib import Path
 
-from . import extraction, calculation
+from . import extraction, calculation, source_input
 
 ROLES = ("buyer", "reviewer")
 SESSION_TTL = 3600
@@ -62,6 +62,8 @@ class Store:
             CREATE TABLE IF NOT EXISTS audit (
                 sequence INTEGER PRIMARY KEY AUTOINCREMENT, rfq_id TEXT NOT NULL,
                 payload TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS custom_offers (
+                id TEXT PRIMARY KEY, payload TEXT NOT NULL);
         """)
         self._db.commit()
         self._refresh()
@@ -82,7 +84,8 @@ class Store:
                 raise ValueError("duplicate_rfq")
             rfqs[rfq["id"]] = rfq
         offers, latest, invalid = {}, {}, set()
-        for offer in data["offers"]:
+        custom = [json.loads(row[0]) for row in self._db.execute("SELECT payload FROM custom_offers").fetchall()]
+        for offer in data["offers"] + custom:
             if not isinstance(offer, dict):
                 raise ValueError("invalid_offer")
             for field in ("id", "rfq_id", "supplier_id", "item_id"):
@@ -103,6 +106,57 @@ class Store:
             if previous is None or revision > previous["document_revision"]:
                 latest[key] = offer
         self._rfqs, self._offers, self._latest, self._invalid = rfqs, offers, latest, invalid
+
+    def save_source(self, principal, rfq_id, body):
+        self._check(principal)
+        if principal["role"] != "buyer":
+            raise PermissionError("buyer_required")
+        if not isinstance(body, dict) or set(body) != {"supplier_label", "content", "offer_id", "expected_source_hash", "expected_document_revision"}:
+            raise ValueError("invalid_source_request")
+        label = body["supplier_label"]
+        if not isinstance(label, str) or not label.strip() or len(label) > 80 or any(ord(c) < 32 for c in label):
+            raise ValueError("invalid_supplier_label")
+        with self._lock:
+            self._refresh()
+            rfq = self._rfq(principal, rfq_id)
+            supplier, digest = source_input.validate_source(body["content"], rfq["item_id"])
+            with self._db:
+                self._db.execute("BEGIN IMMEDIATE")
+                # Refresh inside the write transaction, including other Store instances.
+                self._refresh()
+                custom = [o for o in self._current_offers(rfq_id) if o.get("source_kind") == "user_input"]
+                if body["offer_id"] is None:
+                    if (body["expected_source_hash"] is not None or body["expected_document_revision"] is not None
+                            or len(custom) >= source_input.MAX_CUSTOM_OFFERS):
+                        raise ValueError("custom_source_limit_or_invalid_create")
+                    if any(o["supplier_id"] == supplier for o in self._current_offers(rfq_id)):
+                        raise ValueError("duplicate_custom_supplier")
+                    offer_id, revision = "INPUT-" + _id(), 1
+                else:
+                    previous = next((o for o in custom if o["id"] == body["offer_id"]), None)
+                    if previous is None:
+                        raise ValueError("custom_source_required")
+                    if (body["expected_source_hash"] != previous["source_hash"]
+                            or type(body["expected_document_revision"]) is not int
+                            or body["expected_document_revision"] != previous["document_revision"]):
+                        raise WorkflowConflictError("source_fingerprint_mismatch")
+                    if supplier != previous["supplier_id"]:
+                        raise ValueError("supplier_identity_immutable")
+                    offer_id, revision = previous["id"], previous["document_revision"] + 1
+                offer = {"id": offer_id, "rfq_id": rfq_id, "item_id": rfq["item_id"],
+                         "supplier_id": supplier, "supplier_label": label, "document_revision": revision,
+                         "format": "kv_text", "content": body["content"], "source_hash": digest,
+                         "source_kind": "user_input"}
+                extraction.extract_offer(offer)
+                self._db.execute("INSERT INTO custom_offers VALUES(?,?) ON CONFLICT(id) DO UPDATE SET payload=excluded.payload",
+                                 (offer_id, json.dumps(offer, ensure_ascii=False)))
+                self._refresh()
+                for (proposal_id,) in self._db.execute("SELECT id FROM proposals WHERE offer_id=?", (offer_id,)).fetchall():
+                    self._proposal_row(principal, proposal_id)
+                self._invalidate_rfq_packets(principal, rfq_id)
+                self._audit_event(principal, rfq_id, "source_saved", offer_id=offer_id,
+                                  source_hash=digest, document_revision=revision)
+            return dict(offer)
 
     @staticmethod
     def _offer_key(offer):
@@ -278,7 +332,7 @@ class Store:
             observed = extraction.extract_offer(offer)
             source_fingerprint = self._source_fingerprint(offer)
         result = observed
-        metrics = {"requested_mode": mode, "synthetic": True}
+        metrics = {"requested_mode": mode, "source_kind": offer.get("source_kind", "synthetic_fixture")}
         if mode == "model":
             try:
                 from .llm import extract_offer_with_model
@@ -360,7 +414,7 @@ class Store:
 
     def _current_extractions(self, principal, rfq_id):
         offers = self._current_offers(rfq_id)
-        if len(offers) != 3:
+        if len(offers) < 3:
             return None
         extractions, proposals, confirmations = [], [], []
         for offer in offers:

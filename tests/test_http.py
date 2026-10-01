@@ -11,6 +11,26 @@ from rfq_review.server import MAX_BODY, make_server
 
 
 class HTTPTests(Fixture):
+    def test_new_source_api_auth_role_validation_and_human_gate(self):
+        from test_source_input import request, source
+        path = "/api/rfqs/" + self.rfq_id + "/sources"
+        self.assertEqual(self.request("POST", path, request(), role=None)[0], 401)
+        self.assertEqual(self.request("POST", path, request(), role="reviewer")[0], 403)
+        self.assertEqual(self.request("POST", path, request("not a quote"))[0], 400)
+        self.prepare()
+        status, body, _ = self.request("POST", path, request())
+        self.assertEqual(status, 200)
+        offer = body["offer"]
+        self.assertEqual(self.request("POST", "/api/rfqs/" + self.rfq_id + "/calculate", {"scenario": self.scenario})[0], 409)
+        _, body, _ = self.request("POST", "/api/offers/" + offer["id"] + "/extract", {"mode": "baseline"})
+        self.assertEqual(self.request("POST", "/api/proposals/" + body["proposal"]["id"] + "/confirm", {"manual_confirmation": False})[0], 200)
+        status, body, _ = self.request("POST", "/api/rfqs/" + self.rfq_id + "/calculate", {"scenario": self.scenario})
+        self.assertEqual(status, 200)
+        self.assertEqual(body["packet"]["completeness"]["total"], 4)
+        self.assertEqual(self.request("POST", path, request(source(price=91000), offer=offer))[0], 200)
+        self.assertEqual(self.request("POST", path, request(source(price=98000), offer=offer))[0], 409)
+        self.assertEqual(self.request("POST", path, request("x" * 12001))[0], 400)
+
     def setUp(self):
         super().setUp()
         self.static = self.root / "static"

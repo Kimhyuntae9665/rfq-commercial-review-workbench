@@ -110,6 +110,10 @@ def make_server(store, port=19083, static_dir=None):
                 self._send(200, store.rfq(principal, path.rsplit("/", 1)[1]))
             elif method == "GET" and re.fullmatch(r"/api/offers/[^/]+", path):
                 self._send(200, {"offer": store.offer(principal, path.rsplit("/", 1)[1])})
+            elif method == "POST" and re.fullmatch(r"/api/rfqs/[^/]+/sources", path):
+                body = self._body()
+                if body is not None:
+                    self._send(200, {"offer": store.save_source(principal, path.split("/")[3], body)})
             elif method == "POST" and re.fullmatch(r"/api/offers/[^/]+/extract", path):
                 body = self._body()
                 if body is not None:
@@ -146,7 +150,8 @@ def make_server(store, port=19083, static_dir=None):
                         "packet_invalidated": "Packet invalidated; calculate the current confirmed terms again",
                         "fingerprint_mismatch": "Packet fingerprint does not match the current packet",
                         "current_fingerprint_required": "Current packet fingerprint required",
-                        "source_changed_during_extraction": "Source changed during extraction; retry current source"}
+                        "source_changed_during_extraction": "Source changed during extraction; retry current source",
+                        "source_fingerprint_mismatch": "Source changed; reload it before saving a new revision"}
                 self._send(409, {"error": safe.get(str(error), "Workflow state changed; refresh current source")})
             except AuthenticationError:
                 self._send(401, {"error": "Session missing or expired; sign in to the synthetic demo"})
